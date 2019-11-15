@@ -19,8 +19,25 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId + "\n");
-  displayitems();
+  // displayitems();
+  start();
 })
+var start = function(){
+  inquirer.prompt({
+    name: "run",
+    type: "list",
+    message: "Would you like to BUY something?",
+    choices: ["BUY", "EXIT"]
+  })
+  .then(function(answer) {
+    // based on their answer, either call the bid or the post functions
+    if (answer.run === "BUY") {
+      displayitems();
+    } else{
+      connection.end();
+    }
+  });
+}
 
 var displayitems = function () {
   connection.query("SELECT * FROM products", function (err, res) {
@@ -79,7 +96,7 @@ var enoughInStock = chosenItem.stock_quantity - responseBuyer.itemQuantity;
     function(err){
       if(err) throw err;
       console.log("you have bought this item!!")
-      connection.end();
+      start();
     }
     
     ) // end of connection
@@ -87,7 +104,7 @@ var enoughInStock = chosenItem.stock_quantity - responseBuyer.itemQuantity;
   else{
     console.log("sorry we are out of stock for that many items, please try again");
     // call another function?
-    connection.end();
+    start();
   }
   })// end of .then from inquirer questions
 
