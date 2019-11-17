@@ -1,6 +1,8 @@
 require("dotEnv").config();
 var mysql = require("mysql");
 var inquirer = require("inquirer");
+var Table = require('cli-table3');
+
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -51,23 +53,25 @@ function start() {
 function viewProducts() {
     connection.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
-        console.log(res);
+        showTable(res);
+        // console.log(res);
         start();
     })
 } // end of viewProducts function
 
 // View Low Inventory
 function viewLowInventory() {
-    connection.query("SELECT * FROM products WHERE stock_quantity < 6;", function (err, resL) {
+    connection.query("SELECT * FROM products WHERE stock_quantity < 6;", function (err, res) {
         if (err) throw err;
-        console.log(resL);
+        showTable(res);
+        // console.log(res);
         start();
     })  // end of connection
 } // end of viewLowInventory function
 
 // Add to Inventory
 function addToInventory() {
-    connection.query("SELECT * FROM products", function (err, resI) {
+    connection.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
         inquirer.prompt([
             {
@@ -76,8 +80,8 @@ function addToInventory() {
                 type: "rawlist",
                 choices: function () {
                     var choiceArray = [];
-                    for (var i = 0; i < resI.length; i++) {
-                        choiceArray.push(resI[i].item_name);
+                    for (var i = 0; i < res.length; i++) {
+                        choiceArray.push(res[i].item_name);
                     }
                     return choiceArray;
                 }
@@ -89,9 +93,9 @@ function addToInventory() {
             }
         ]).then(function (answer) {
             var chosenItem;
-            for (var i = 0; i < resI.length; i++) {
-                if (resI[i].item_name === answer.choice) {
-                    chosenItem = resI[i];
+            for (var i = 0; i < res.length; i++) {
+                if (res[i].item_name === answer.choice) {
+                    chosenItem = res[i];
                 }
             }// end of for loop
             parseAddInventory = parseInt(answer.addInventory);
@@ -158,3 +162,27 @@ connection.query(
 } // end of addNewProduct
     // Add New Product
 
+
+    function showTable(res){
+
+        var Table = require('cli-table3');
+        
+        // instantiate
+        var table = new Table({
+            head: ['Item Name', 'Department', 'price', 'Stock Quantity']
+            // , colWidths: [50, 50, 50, 50]
+        });
+        
+        for (i = 0; i < res.length; i++){
+            
+            // table is an Array, so you can `push`, `unshift`, `splice` and friends
+            table.push(
+                [res[i].item_name, res[i].department, res[i].price, res[i].stock_quantity]
+                //   , ['First value', 'Second value']
+                );
+            }
+            
+            console.log(table.toString());
+            
+        } // end of showTable function
+            
