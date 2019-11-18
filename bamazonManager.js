@@ -120,6 +120,10 @@ function addToInventory() {
 } // end of addToInventory function
 
 function addNewProduct(){
+connection.query("SELECT * FROM departments", function(err, results){
+    if (err) throw err;
+
+    
     inquirer.prompt([
         {
             name: "item",
@@ -130,7 +134,13 @@ function addNewProduct(){
             name: "departmentI",
             type: "rawlist",
             message: "which department does this item go into?",
-            choices: ["furniture", "electronics", "outdoors"]
+            choices: function(){
+                var choiceArray = [];
+                for (var i = 0; i < results.length; i++){
+                    choiceArray.push(results[i].department_name);
+                }
+                return choiceArray;
+            }
         },
         {
             name: "priceI",
@@ -144,25 +154,28 @@ function addNewProduct(){
         }
     ])
     .then(function(answer){
-connection.query(
-    "INSERT INTO products SET ?",
-    {
-        item_name: answer.item,
-        department: answer.departmentI,
-        price: answer.priceI,
-        stock_quantity: answer.stock_quantityI
-    },
-    function(err){
-        if (err) throw err;
-        console.log("added new product!");
-        start();
-    }
-)
-    }) // end of .then function
-} // end of addNewProduct
+        connection.query(
+            "INSERT INTO products SET ?",
+            {
+                item_name: answer.item,
+                department: answer.departmentI,
+                price: answer.priceI,
+                stock_quantity: answer.stock_quantityI
+            },
+            function(err){
+                if (err) throw err;
+                console.log("added new product!");
+                start();
+            }
+            )
+        }) // end of .then function
+   
+    }) // end of connection pulling department names
+
+    } // end of addNewProduct
     // Add New Product
-
-
+    
+    
     function showTable(res){
 
         var Table = require('cli-table3');

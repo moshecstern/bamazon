@@ -84,8 +84,7 @@ for (var i = 0; i <results.length; i++){
     chosenItem = results[i];
   }
 }
-    // if there is not enough quantity then console.log("insuficiant quantity")
-    // and ask them if they want to quit or reorder
+
 if (chosenItem.stock_quantity > parseInt(responseBuyer.itemQuantity)){
   var enoughInStock = chosenItem.stock_quantity - responseBuyer.itemQuantity;
   var updateSalesVar = responseBuyer.itemQuantity * chosenItem.price;

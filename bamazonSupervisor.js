@@ -31,7 +31,8 @@ var start = function(){
       displayitems();
     }else if(answer.run === "Create New Department") {
 console.log("create new department");
-start();
+newDepartment();
+// start();
     }else{
       console.log("Come back soon! thank you for visiting");
       connection.end();
@@ -60,17 +61,7 @@ var displayitems = function () {
             showTable(res);
             start();
         })
-    // };
-//     connection.query("SELECT * FROM products", 
-//     function (err, res) {
 
-//     if (err) throw err;
-//     showTable(res);
-//     // console.log(res);
-//     console.log(res);
-//     start();
-//     // connection.end();
-//   })
 } // end of displayitems function
 
 function showTable(res){
@@ -94,3 +85,31 @@ function showTable(res){
         console.log(table.toString());
         
     } // end of showTable function
+     
+    function newDepartment(){
+inquirer.prompt([
+  {
+    name: "departmentName",
+    message: "What department would you like to add?",
+    type: "input"
+  },
+  {
+    name: "overHeadCosts",
+    message: "How much is the overhead costs of this department?",
+    type: "number"
+  }
+]).then(function(answer){
+connection.query("INSERT INTO departments set ?",
+{
+  department_name: answer.departmentName,
+  over_head_costs: answer.overHeadCosts
+},
+function(err){
+  if (err) throw err;
+  console.log("You have added a new product!");
+  start()
+})
+})// end of then with answer
+
+      // start()
+    }// newDepartemnt function
