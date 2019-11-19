@@ -1,9 +1,4 @@
-# bamazon
-an amazon like application that has 3 modes;
-- Customer: 
-- Manager: 
-- Supervisor: 
-
+# bamazon Store By Moshe Stern
 
 ## About
 
@@ -31,13 +26,15 @@ an amazon like application that has 3 modes;
 * Run `npm install`
 * Run `node bamazonCustomer.js` , `node bamazonManager.js` , `node bamazonSupervisor.js`
 
+## Video Walkthrough
+* Video:https://drive.google.com/file/d/1RsOhuo9WziHqhWRLa56mFsIyWQPYFw-N/view
 
-## Screenshots / Walkthrough
+
+## Screenshots
 * MySQL database inital upload 
 ![Results](images/mysql.png)
 
 ## bamazonCustomer
-* Video: https://drive.google.com/file/d/1bOplFkPx4wn-OSSr2FJnGthMlOQwSKL-/view
 * Options
 - Buy
 - Exit
@@ -48,7 +45,6 @@ an amazon like application that has 3 modes;
 
 
 ## bamazonManager
-* Video: https://drive.google.com/file/d/1bOplFkPx4wn-OSSr2FJnGthMlOQwSKL-/view
 * Options: 
 - View Stock
 - View low stock
@@ -66,7 +62,6 @@ an amazon like application that has 3 modes;
 
 
 ## bamazonSupervisor
-* Video: https://drive.google.com/file/d/1bOplFkPx4wn-OSSr2FJnGthMlOQwSKL-/view
 * Options
 - View Sales by Department
 - Create New Department
