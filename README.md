@@ -38,25 +38,39 @@ an amazon like application that has 3 modes;
 
 ## bamazonCustomer
 * Video: https://drive.google.com/file/d/1bOplFkPx4wn-OSSr2FJnGthMlOQwSKL-/view
-* Options Buy or Exit
+* Options
+- Buy
+- Exit
     ### Buy
 ![Results](images/customerViewItems.png)
  ### Tracking Stock
-    ![Results](images/customerStock.png)
+![Results](images/customerStock.png)
 
 
 ## bamazonManager
 * Video: https://drive.google.com/file/d/1bOplFkPx4wn-OSSr2FJnGthMlOQwSKL-/view
-* Options Buy or Exit
-    ### Buy
-![Results](images/customerViewItems.png)
- ### Tracking Stock
-    ![Results](images/customerStock.png)
+* Options: 
+- View Stock
+- View low stock
+- Add to Inventory
+- Add new product
+- Exit 
+### View Stock
+![Results](images/managerStock.png)
+### View Low Stock
+![Results](images/managerLowStock.png)
+### Add to Inventory
+![Results](images/managerAddInventory.png)
+### Add New Product: departments based on departments table options
+![Results](images/managerAddItem.png)
+
 
 ## bamazonSupervisor
 * Video: https://drive.google.com/file/d/1bOplFkPx4wn-OSSr2FJnGthMlOQwSKL-/view
-* Options Buy or Exit
-### Buy
-![Results](images/customerViewItems.png)
- ### Tracking Stock
-    ![Results](images/customerStock.png)
+* Options
+- View Sales by Department
+- Create New Department
+### View Sales by Department
+![Results](images/supervisorView.png)
+ ### Create New Department
+![Results](images/supervisorAddDepartment.png)
