@@ -56,7 +56,7 @@ an amazon like application that has 3 modes;
 ## bamazonSupervisor
 * Video: https://drive.google.com/file/d/1bOplFkPx4wn-OSSr2FJnGthMlOQwSKL-/view
 * Options Buy or Exit
-    * **Buy**
+* Buy
 ![Results](images/customerViewItems.png)
- * **Tracking Stock**
+ * Tracking Stock
     ![Results](images/customerStock.png)
