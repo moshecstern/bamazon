@@ -21,6 +21,15 @@ CREATE TABLE departments (
   PRIMARY KEY (department_id)
 );
 
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ("electronics", "800");
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ("furniture", "1200");
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ("outdoors", "400");
+
 INSERT INTO products (item_name, department, price, stock_quantity)
 VALUES ("couch", "furniture", 800, 200);
 
@@ -50,12 +59,3 @@ VALUES ("backpack", "outdoors", 60, 200);
 
 INSERT INTO products (item_name, department, price, stock_quantity)
 VALUES ("boots", "outdoors", 120, 100);
-
-INSERT INTO departments (department_name, over_head_costs)
-VALUES ("electronics", "800");
-
-INSERT INTO departments (department_name, over_head_costs)
-VALUES ("furniture", "1200");
-
-INSERT INTO departments (department_name, over_head_costs)
-VALUES ("outdoors", "400");
